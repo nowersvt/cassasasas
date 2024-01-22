@@ -32,7 +32,8 @@ spec:
   - metadata:
       name: cassandra-data
     spec:
-      accesModes: [" ReadWriteOnce"]
+      accessModes: [" ReadWriteOnce"]
       resources:
         requests:
           storage: "10Gi"
+#!
