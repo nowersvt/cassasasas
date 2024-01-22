@@ -21,22 +21,18 @@ spec:
           value: "{{ .Values.cassandra.clusterName }}"
         ports:
         - containerPort: 9042
+        volumeMounts:
+          - name:  cassandra-data
+            mountPath: /var/lib/cassandra
         resources:
           limits:
             memory: "{{ .Values.cassandra.memoryLimit }}"
             cpu: "{{ .Values.cassandra.cpuLimit }}"
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: cassandra
-spec:
-  selector:
-    app: cassandra
-  ports:
-  - protocol: TCP
-    port: 9042
-    targetPort: 9042
-  clusterIP: None
+  volumeClaimTemplates:
+  - metadata:
+      name: cassandra-data
+    spec:
+      accesModes: [" ReadWriteOnce"]
+      resources:
+        requests:
+          storage: "10Gi"
