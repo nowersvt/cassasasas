@@ -28,6 +28,14 @@ spec:
           limits:
             memory: "{{ .Values.cassandra.memoryLimit }}"
             cpu: "{{ .Values.cassandra.cpuLimit }}"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9042
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 9042
   volumeClaimTemplates:
   - metadata:
       name: cassandra-data
@@ -36,4 +44,3 @@ spec:
       resources:
         requests:
           storage: "10Gi"
-#!
