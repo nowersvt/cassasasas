@@ -9,4 +9,4 @@ spec:
   - protocol: TCP
     port: 9042
     targetPort: 9042
-  clusterIP: 10.0.0.1/12
+  clusterIP: None
