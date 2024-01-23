@@ -12,7 +12,7 @@ deploy-cassandra:
 		--set cassandra.clusterName=$(CASSANDRA_CLUSTER_NAME) \
 		--set cassandra.memoryLimit=$(CASSANDRA_MEMORY_LIMIT) \
 		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT) \
-		--set cassandra.storageCapacity=$(CASSANDRA_STORAGE)
+		--set cassandra.storageCapacity=$(CASSANDRA_STORAGE_CAPACITY)
 
 
 testConnect-to-db: 
