@@ -44,6 +44,19 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
+          description: "Check if Cassandra is responsive by executing CQL query"
+        readinessProbe:
+          exec:
+            command:
+            - cqlsh
+            - -e
+            - "SELECT * FROM system_schema.keyspaces;"
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+          description: "Check if Cassandra is ready to serve traffic"
       volumes:
       - name: cassandra-config
         configMap:
