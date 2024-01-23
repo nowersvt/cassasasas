@@ -25,8 +25,8 @@ spec:
         - containerPort: 9042
         volumeMounts:
         - name: cassandra-config
-          mountPath: /etc/cassandra
-          subPath: cassandra
+          mountPath: /etc/cassandra-config
+          readOnly: true
         - name: cassandra-data
           mountPath: /var/lib/cassandra
         resources:
