@@ -20,7 +20,7 @@ spec:
         - name: CASSANDRA_CLUSTER_NAME
           value: "{{ .Values.cassandra.clusterName }}"
         - name: CASSANDRA_SEEDS
-          value: "{{ .Values.cassandra.seedHostnames | toYaml | quote }}"
+          value: "cassandra-0.cassandra.default.svc.cluster.local"
         ports:
         - containerPort: {{ .Values.cassandra.port }}
         volumeMounts:
