@@ -22,7 +22,7 @@ spec:
         - name: CASSANDRA_SEEDS
           value: cassandra-0.cassandra.default.svc.cluster.local
         ports:
-        - containerPort: {{ .Values.cassandra.port }}
+        - containerPort: 9042
         volumeMounts:
         - name: cassandra-config
           mountPath: /etc/cassandra-config

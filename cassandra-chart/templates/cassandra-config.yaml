@@ -17,6 +17,6 @@ data:
     listen_address: "auto"
     rpc_address: "auto"
     start_native_transport: true
-    native_transport_port: 9041
+    native_transport_port: 9042
     rpc_port: 9160
     endpoint_snitch: SimpleSnitch
