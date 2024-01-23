@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cassandra-config
+data:
+  cassandra.yaml: |-
+    authenticator: AllowAllAuthenticator
+    authorizer: AllowAllAuthorizer
+    roles:
+    - name: admin
+      superuser: true
+      login: true
+    - name: anonymous
+      login: true
+    seeds: "$(CASSANDRA_SEEDS)"
+    cluster_name: "MyCassandraCluster"
+    listen_address: "auto"
+    rpc_address: "auto"
+    start_native_transport: true
+    native_transport_port: 9042
+    rpc_port: 9160
+    endpoint_snitch: SimpleSnitch

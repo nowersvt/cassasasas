@@ -19,15 +19,23 @@ spec:
         env:
         - name: CASSANDRA_CLUSTER_NAME
           value: "{{ .Values.cassandra.clusterName }}"
+        - name: CASSANDRA_SEEDS
+          value: "$(CASSANDRA_SEEDS)"
         ports:
         - containerPort: 9042
         volumeMounts:
-          - name:  cassandra-data
+          - name: cassandra-config
+            mountPath: /etc/cassandra
+          - name: cassandra-data
             mountPath: /var/lib/cassandra
         resources:
           limits:
             memory: "{{ .Values.cassandra.memoryLimit }}"
             cpu: "{{ .Values.cassandra.cpuLimit }}"
+      volumes:
+      - name: cassandra-config
+        configMap:
+          name: cassandra-config
   volumeClaimTemplates:
   - metadata:
       name: cassandra-data

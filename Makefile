@@ -11,3 +11,5 @@ deploy-cassandra:
 		--set cassandra.clusterName="$(CASSANDRA_CLUSTER_NAME)" \
 		--set cassandra.memoryLimit=$(CASSANDRA_MEMORY_LIMIT) \
 		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT)
+
+client-app:
