@@ -15,5 +15,5 @@ deploy-cassandra:
 		--set cassandra.clusterSeeds=$(CASSANDRA_CLUSTER_SEEDS)
 
 client-app: deploy-cassandra
-	kubectl wait --for=condition=available deployment/$(CASSANDRA_CLUSTER_NAME) --timeout=300s
-	kubectl exec -it $$(kubectl get pods -l app=cassandra -o jsonpath='{.items[0].metadata.name}') -- bash -il
+	kubectl wait --for=condition=available deployment/$(CASSANDRA_CLUSTER_SEEDS) --timeout=300s
+	kubectl exec -it $(CASSANDRA_CLUSTER_SEEDS) -- bash -il
