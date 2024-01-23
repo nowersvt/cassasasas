@@ -3,10 +3,7 @@ CASSANDRA_REPLICAS := 1
 CASSANDRA_IMAGE := cassandra:latest
 CASSANDRA_MEMORY_LIMIT := 12Gi
 CASSANDRA_CPU_LIMIT := 2
-CASSANDRA_CLUSTER_SEEDS := $(shell \
-	for i in $$(seq 0 $$(expr $(CASSANDRA_REPLICAS) - 1)); do \
-		echo -n "$$i-cassandra.cassandra.default.svc.cluster.local,"; \
-	done | sed 's/,$$//')
+CASSANDRA_CLUSTER_SEEDS := cassandra-0.cassandra.default.svc.cluster.local
 
 deploy-cassandra:
 	helm upgrade --install $(CASSANDRA_CLUSTER_NAME) ./cassandra-chart \
