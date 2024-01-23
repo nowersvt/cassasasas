@@ -12,7 +12,7 @@ data:
       login: true
     - name: anonymous
       login: true
-    seeds: "$(CASSANDRA_SEEDS)"
+    seeds: "cassandra-0.cassandra.default.svc.cluster.local"
     cluster_name: "MyCassandraCluster"
     listen_address: "auto"
     rpc_address: "auto"
