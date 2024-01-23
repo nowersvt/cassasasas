@@ -4,16 +4,13 @@ CASSANDRA_IMAGE := cassandra:latest
 CASSANDRA_MEMORY_LIMIT := 12Gi
 CASSANDRA_CPU_LIMIT := 2
 
-
 deploy-cassandra:
 	helm upgrade --install $(CASSANDRA_CLUSTER_NAME) ./cassandra-chart \
 		--set cassandra.replicas=$(CASSANDRA_REPLICAS) \
 		--set cassandra.image=$(CASSANDRA_IMAGE) \
-		--set cassandra.clusterName=$(CASSANDRA_CLUSTER_NAME)
+		--set cassandra.clusterName=$(CASSANDRA_CLUSTER_NAME) \
 		--set cassandra.memoryLimit=$(CASSANDRA_MEMORY_LIMIT) \
 		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT)
 
 client-app: deploy-cassandra
 	kubectl exec -it $$(kubectl get pods -l app=cassandra -o jsonpath='{.items[0].metadata.name}') -- bash -il
-
-
