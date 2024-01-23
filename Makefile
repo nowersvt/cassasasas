@@ -1,7 +1,7 @@
 CASSANDRA_CLUSTER_NAME := my-cassandra
 CASSANDRA_REPLICAS := 1
 CASSANDRA_IMAGE := cassandra:latest
-CASSANDRA_MEMORY_LIMIT := 12Gi
+CASSANDRA_MEMORY_LIMIT := 14Gi
 CASSANDRA_CPU_LIMIT := 2
 
 deploy-cassandra:
@@ -13,6 +13,7 @@ deploy-cassandra:
 		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT)
 
 test-cassandra: deploy-cassandra
+
 
 connect-cassandra: deploy-cassandra
 	kubectl exec -it $$(kubectl get pods -l app=cassandra -o jsonpath='{.items[0].metadata.name}') -- bash -il
