@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: cassandra
-        image: {{ .Values.cassandra.image }}
+        image: "{{ .Values.cassandra.image }}"
         env:
         - name: CASSANDRA_CLUSTER_NAME
           value: "{{ .Values.cassandra.clusterName }}"
@@ -24,10 +24,11 @@ spec:
         ports:
         - containerPort: 9042
         volumeMounts:
-          - name: cassandra-config
-            mountPath: /etc/cassandra
-          - name: cassandra-data
-            mountPath: /var/lib/cassandra
+        - name: cassandra-config
+          mountPath: /etc/cassandra
+          readOnly: true
+        - name: cassandra-data
+          mountPath: /var/lib/cassandra
         resources:
           limits:
             memory: "{{ .Values.cassandra.memoryLimit }}"
