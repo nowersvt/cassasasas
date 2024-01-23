@@ -18,7 +18,8 @@ deploy-cassandra:
 		--set cassandra.image=$(CASSANDRA_IMAGE) \
 		--set cassandra.clusterName=$(CASSANDRA_CLUSTER_NAME) \
 		--set cassandra.memoryLimit=$(CASSANDRA_MEMORY_LIMIT) \
-		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT)
+		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT) \
+		--set cassandra.seedHostnames=$(CASSANDRA_SEEDS_HOST_NAME)
 
 
 connect-cassandra-pod: 
