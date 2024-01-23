@@ -39,8 +39,10 @@ spec:
             - cqlsh
             - -e
             - "DESCRIBE KEYSPACES;"
-          initialDelaySeconds: 120
-          periodSeconds: 20
+          initialDelaySeconds: 60
+          timeoutSeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
       volumes:
       - name: cassandra-config
         configMap:
