@@ -20,7 +20,7 @@ spec:
         - name: CASSANDRA_CLUSTER_NAME
           value: "{{ .Values.cassandra.clusterName }}"
         - name: CASSANDRA_SEEDS
-          value: "{{ .Values.cassandra.clusterSeeds }}"
+          value: cassandra-0.cassandra.default.svc.cluster.local
         ports:
         - containerPort: 9042
         volumeMounts:
