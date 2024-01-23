@@ -33,6 +33,14 @@ spec:
           limits:
             memory: "{{ .Values.cassandra.memoryLimit }}"
             cpu: "{{ .Values.cassandra.cpuLimit }}"
+        livenessProbe:
+          exec:
+            command:
+            - cqlsh
+            - -e
+            - "DESCRIBE KEYSPACES;"
+          initialDelaySeconds: 60
+          periodSeconds: 10
       volumes:
       - name: cassandra-config
         configMap:
