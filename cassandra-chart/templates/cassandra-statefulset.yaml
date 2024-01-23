@@ -33,7 +33,7 @@ spec:
           limits:
             memory: "{{ .Values.cassandra.memoryLimit }}"
             cpu: "{{ .Values.cassandra.cpuLimit }}"
-        livenessProbe:
+        livenessProbe:          # Check if Cassandra is responsive by executing CQL query
           exec:
             command:
             - cqlsh
@@ -44,8 +44,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
-          description: "Check if Cassandra is responsive by executing CQL query"
-        readinessProbe:
+        readinessProbe:           # Check if Cassandra is ready to serve traffic
           exec:
             command:
             - cqlsh
@@ -56,7 +55,6 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
-          description: "Check if Cassandra is ready to serve traffic"
       volumes:
       - name: cassandra-config
         configMap:
