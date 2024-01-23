@@ -13,8 +13,10 @@ deploy-cassandra:
 		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT)
 
 
-connect-cassandra-pod: 
-	kubectl exec -it $$(kubectl get pods -l app=cassandra -o jsonpath='{.items[0].metadata.name}') -- bash -il
+testConnect-to-db: 
+	kubectl exec -it cassandra-0 -- sh -c "cqlsh -e 'SHOW HOST'"
 
 connect-cassandra-db: 
-	kubectl exec -it $$(kubectl get pods -l app=cassandra -o jsonpath='{.items[0].metadata.name}') -- cqlsh
+	kubectl exec -it cassandra-0 -- cqlsh
+connect-app-client:
+	kubectl exec -it cassandra-0 -- /bin/sh
