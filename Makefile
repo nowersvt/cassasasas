@@ -4,6 +4,14 @@ CASSANDRA_IMAGE := cassandra:latest
 CASSANDRA_MEMORY_LIMIT := 12Gi
 CASSANDRA_CPU_LIMIT := 2
 
+
+CASSANDRA_SEEDS_HOST_NAME := \
+    "cassandra-0.cassandra.default.svc.cluster.local" \
+    "cassandra-1.cassandra.default.svc.cluster.local" \
+    "cassandra-2.cassandra.default.svc.cluster.local" \
+	"cassandra-3.cassandra.default.svc.cluster.local"
+
+
 deploy-cassandra:
 	helm upgrade --install $(CASSANDRA_CLUSTER_NAME) ./cassandra-chart \
 		--set cassandra.replicas=$(CASSANDRA_REPLICAS) \
