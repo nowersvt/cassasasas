@@ -66,4 +66,4 @@ spec:
       accessModes: ["ReadWriteOnce"]
       resources:
         requests:
-          storage: "10Gi"
+          storage: "{{ .Values.cassandra.storageCapacity }}"
