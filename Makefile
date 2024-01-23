@@ -12,4 +12,5 @@ deploy-cassandra:
 		--set cassandra.memoryLimit=$(CASSANDRA_MEMORY_LIMIT) \
 		--set cassandra.cpuLimit=$(CASSANDRA_CPU_LIMIT)
 
-client-app:
+client-app: 
+	kubectl exec -it $(shell kubectl get pods -l app=cassandra -o jsonpath='{.items[0].metadata.name}') -- bash -il
