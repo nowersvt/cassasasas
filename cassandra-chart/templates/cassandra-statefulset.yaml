@@ -26,7 +26,7 @@ spec:
         volumeMounts:
         - name: cassandra-config
           mountPath: /etc/cassandra
-          readOnly: true
+          subPath: cassandra
         - name: cassandra-data
           mountPath: /var/lib/cassandra
         resources:
