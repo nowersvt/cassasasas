@@ -6,9 +6,8 @@ on:
         - master
 jobs:
   deploy_frotend:
-    name: deploy frotend
     runs-on: ubuntu-22.04
 
     steps:
     - name: Print Hi
-      run : echo "Hsddsdsdi"
+      run : echo "Hello World"
