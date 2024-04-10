@@ -1,0 +1,13 @@
+name: GitHub-Actions-Basic
+
+on: 
+ push:
+   branches: 
+        - master
+jobs:
+  deploy_frotend:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Print Hi
+      run : echo "Hello World"
